@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="container">
+            <div class="logo" style="display: flex; align-items: center;">
+                <img src="/images/logo.png" alt="logo">
+                <h1 style="color: #199eeb;">DocMate</h1>
+            </div>
+        </div>
+    </header>
+    <div class="login-body">
+    <div class="main-div">
+        <h1>Login to Continue</h1>
+        <div class="info">
+            <input type="text" id="username" class="input-value" placeholder="Username">
+            <input type="password" id="password" class="input-value" placeholder="Password">
+            <button id="loginBtn" class="btn">Login</button>
+        </div>
+        <div style="margin-top: 2vw;">
+       <a href="signup.html" >Don't have an account? Sign up</a>
+        </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (username === '' || password === '') {
+                alert('Please fill in both fields.');
+                return;
+            }
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res=> res.json())
+            .then( data=> {
+                if (data.success) {
+                    alert('Login successful!');
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("username", username);
+                    window.location.href = 'index.html'; // Redirect to home page
+                } else {
+                    alert('Invalid username or password.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>

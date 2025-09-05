@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - DocMate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="container">
+            <div class="logo" style="display: flex; align-items: center;">
+                <img src="/images/logo.png" alt="logo">
+                <h1 style="color: #199eeb;">DocMate</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li>
+          <a href="profile.html" title="Profile">
+            <i class="fa-solid fa-circle-user" style="font-size: 28px; color: #199eeb;"></i>
+          </a>
+        </li>
+                <li><button class="login" onclick="logout()">Logout</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="login-body" style="flex-direction: column;">
+        <div class="main-div">
+            <h1>My Profile</h1>
+            <div class="info">
+                <p><strong>Username:</strong> <span id="profile-username">Loading...</span></p>
+                <p><strong>Email:</strong> user@example.com</p>
+                <p><strong>Member Since:</strong> August 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simulate user data (normally from a real backend or JWT token)
+        const username = localStorage.getItem("username") || "Guest";
+        document.getElementById("profile-username").innerText = username;
+        console.log("Profile loaded for user:", username);
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("username");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

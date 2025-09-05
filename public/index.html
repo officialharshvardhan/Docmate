@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMate</title>
+    <link rel="stylesheet" href="styles.css">
+        <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="container">
+            <div class="logo">
+                <img src="/images/logo.png" alt="logo">
+            </div>
+            <i class="fa-solid fa-bars menu-toggle"></i> <!-- Hamburger Icon -->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <!-- <li><a href="login.html"><button class="login">Login</button></a></li> -->
+                <li id="login-nav"><a href="login.html"><button class="login">Login</button></a></li>
+                <li id="profile-nav" style="display: none;"><a href="profile.html"><i class="fa-solid fa-circle-user user-profile-icon" aria-hidden="true"></i></a></li>
+                <li id="logout-nav" style="display: none;"><button class="login" onclick="logout()">Logout</button></li>
+            </ul>
+        </div>
+    </header>
+    <section id="home">
+        <div class="home-content">
+            <h1>Welcome to DocMate</h1>
+            <p class="qotes">Clinic ho ya online care,<br>Doctor yahan hai always there!<img class="home-icon" src="/images/xyz.jpg"></p>
+            <p>We provide expert medical services with a personal touch, ensuring accurate diagnosis,
+                compassionate treatment, and long-term wellness.<img class="home-icon" src="/images/abc.webp"></p>
+        </div>
+            <img src="/images/3781341.jpg" class="home-image" alt="Home Image">
+        
+    </section>
+    <section id="about" class="about-section">
+        <div class="sub-heading-div">
+            <h1 class="sub-heading-txt">About Us</h1>
+        </div>
+        <div class="about-content">
+            <img src="/images/about.svg" alt="About Image" class="about-img">
+            <p class="DocMate-content">At DocMate, we believe healthcare is not just about treatment — it's about trust, comfort, and genuine care. 
+                With years of experience and a patient-first approach, we aim to provide quality medical services that are accessible, accurate, and compassionate.
+                Whether it's a routine consultation or ongoing care, we’re here to listen, diagnose, 
+                and heal — because your health is our priority.
+            </p>
+        </div>
+    </section>
+    <section id="services" class="services-section">
+        <div class="sub-heading-div">
+            <h1 class="sub-heading-txt">Our Services</h1>
+        </div>
+        <div class="services-part">
+            <div class="services-content">
+                <div class="service-item">
+                    <img src="/images/appointment.png" alt="Consultation">
+                    <h2>Book Appointment</h2>
+                    <!-- <p>Expert medical advice and personalized care plans.</p> -->
+                </div>
+                <div class="service-item">
+                    <img src="/images/derma.png" alt="Diagnosis">
+                    <h2>AI Dermatologist</h2>
+                    <!-- <p>Accurate diagnosis using advanced medical technology.</p> -->
+                </div>
+                <div class="service-item">
+                    <img src="/images/report.png" alt="Treatment">
+                    <h2>Health Report</h2>
+                    <!-- <p>Comprehensive treatment options tailored to your needs.</p> -->
+                </div>
+                <div class="service-item">
+                    <img src="/images/chatbot.png" alt="Treatment" id="chatbot-btn">
+                    <h2>DocMate</h2>
+                    <!-- <p>Comprehensive treatment options tailored to your needs.</p> -->
+                </div>
+            </div>
+            <img src="/images/homePic.svg" alt="Services Image" class="services-img">
+        </div>
+    </section>
+    <section id="footer" class="footer">
+        <div class="footer-heading">
+            <div class="footer-logo">
+                <img src="/images/logo.png" alt="DocMate Logo">
+                <h1>DocMate</h1>
+            </div>
+            <p>
+                Where Health Meets Technology.<br>Your trusted partner in healthcare.
+               
+            </p>
+        </div>
+        <div class="footer-content">
+            <p>&copy; 2023 DocMate. All rights reserved.</p>
+            <h1>Follow and Contact Us</h1>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+    <div id="chatbot" style="display:none;" class="chat-container">
+        <div class="chat-header">
+            <h3>DocMate Assistant</h3>
+            <button onclick="toggleChat()" id="cross-btn">✖</button>
+        </div>
+        <div id="chat-body" class="chat-body"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask me anything..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

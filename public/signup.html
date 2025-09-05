@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="container">
+            <div class="logo" style="display: flex; align-items: center;">
+                <img src="/images/logo.png" alt="logo">
+                <h1 style="color: #199eeb;">DocMate</h1>
+            </div>
+        </div>
+    </header>
+    <div class="login-body" style="display: flex; align-items: center;">
+    <div class="main-div">
+        <h1>Create Account</h1>
+        <div class="info">
+            <input type="text" id="newUsername" class="input-value" placeholder="Choose username">
+            <input type="password" id="newPassword" class="input-value" placeholder="Choose password">
+            <button id="signupBtn" class="btn">Sign Up</button>
+        </div>
+        <div style="margin-top: 2vw;">
+            <a href="login.html">Already have an account? Login</a>
+        </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            const username = document.getElementById('newUsername').value.trim();
+            const password = document.getElementById('newPassword').value.trim();
+
+            if (username === '' || password === '') {
+                alert('Please fill in both fields.');
+                return;
+            }
+
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Account created successfully!');
+                
+                    window.location.href = 'login.html'; // Redirect to login page
+                } else {
+                    alert('Username already exists. Please choose a different one.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>
